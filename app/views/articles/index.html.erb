@@ -1,0 +1,20 @@
+<h1>My Articles</h1>
+
+<ul id="articles">
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article_path(article) %>.
+
+      <%= link_to article_path(article.id), method: :delete, data: { confirm: "Delete #{article.title}?" } do %>
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      <% end %>
+      <p><%= article.content %></p>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= link_to new_article_path do %>
+  <i class="fa fa-plus"></i> Add a new article
+<% end %>
